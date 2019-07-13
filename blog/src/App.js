@@ -1,26 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import About from './components/About'
+import Homepage from './components/Homepage'
+import FavoriteFood from './components/FavoriteFood'
+import FavoriteMovie from './components/FavoriteMovie'
+import MainBlog from './components/MainBlog'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component{
+  render(){
+    return(
+        <Router>
+          <div>
+            <ul>
+              <li>
+                <Link to="/about">About</Link>
+              </li>
+              <li>
+                <Link to="/favoritefood">FavoriteFood</Link>
+              </li>
+              <li>
+                <Link to="/favoritemovie">FavoriteMovie</Link>
+              </li>
+              <li>
+                <Link to="/mainblog">MainBlog</Link>
+              </li>
+              <li>
+                <Link to="/">Homepage</Link>
+              </li>
+            </ul>
+
+            <hr />
+
+
+            <Route path="/about" component={About} />
+            <Route path="/favoritefood" component={FavoriteFood} />
+            <Route path="/favoritemovie" component={FavoriteMovie} />
+            <Route exact path="/" component={Homepage} />
+            <Route path="/mainblog" component={MainBlog} />
+
+          </div>
+        </Router>
+
+    )
+  }
 }
 
-export default App;
+export default App
